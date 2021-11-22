@@ -1,0 +1,132 @@
+
+<div class="container">
+
+  <div class="jumbotron">
+    <h1>Users</h1> 
+</div>
+
+<hr  class="my-6">
+
+  <div class="row">
+    <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+      <div class="form-body">
+        
+                <form #form="ngForm" (submit)="onSubmit(form)">
+                  
+                      <input type="hidden" class="forom-control" name="id" [value]="formData.id">
+                                    
+                      <div class="form-group row">
+                        <label>Name</label>
+                        <input type="text" 
+                                class="forom-control" 
+                                name="name" 
+                                #name="ngModel" 
+                                [(ngModel)]="formData.name"
+                                required
+                                [class.invalid]="name.invalid && name.touched">
+                      </div>
+                      
+                      <div class="form-group row">
+                        <label>Family</label>
+                        <input type="text" 
+                        class="forom-control" 
+                        name="family" 
+                        #family="ngModel" 
+                        [(ngModel)]="formData.family"
+                        required
+                        [class.invalid]="family.invalid && family.touched">
+                      </div>
+      
+                      
+                      <div class="form-group row">
+                        <label>Phone Number</label>
+                        <input type="text" 
+                        class="forom-control" 
+                        name="phoneNumber" 
+                        #phoneNumber="ngModel" 
+                        [(ngModel)]="formData.phoneNumber"
+                        required
+                        minlength="11"
+                        maxlength="11"
+                        pattern="[0][1-9][0-9]*"
+                        [class.invalid]="phoneNumber.invalid && phoneNumber.touched">
+                      </div>
+      
+                      
+                      <div class="form-group row">
+                        <label>National Code</label>
+                        <input type="text" 
+                              class="forom-control" 
+                              name="nationalCode" 
+                              #nationalCode="ngModel" 
+                              [(ngModel)]="formData.nationalCode"
+                              required
+                              minlength="10"
+                              maxlength="10"
+                              pattern="\d*"
+                              [class.invalid]="nationalCode.invalid && nationalCode.touched">
+                      </div>
+      
+                      <div class="form-group row">
+      
+                        <label>Birth Date</label>
+      
+                              <input type="text" 
+                                    #datepickerInput
+                                    name="birthDate"                          
+                                    [(ngModel)]="formData.birthDate" />
+                              <ng-persian-datepicker
+                                    [input]="datepickerInput"
+                                    [uiTheme]="'dark'"
+                                    [dateFormat]="'jYYYY-jMM-jDD'"
+                                    ></ng-persian-datepicker>   
+      
+                      </div>
+      
+                      <br>
+      
+                      <div class="form-group">
+                          <button type="submit" class="btn btn-lg btn-primary" [disabled]="form.invalid">Submit</button>
+                      </div>
+                            
+                </form>
+     
+      </div>
+      
+    </div>
+
+    <div class="col-lg-1"></div>
+
+    <div class="col-lg-7  col-md-12 col-sm-12 col-xs-12">
+
+      <app-users-list [users]="users"></app-users-list>
+      <!-- <h4>List Of Users</h4>
+<hr>
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Family</th>
+            <th scope="col">National Code</th>
+            <th scope="col">Phone Number</th>
+            <th scope="col">Birth Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users">            
+            <td>{{user.id}}</td>
+            <td>{{user.name}}</td>
+            <td>{{user.family}}</td>
+            <td>{{user.nationalCode}}</td>
+            <td>{{user.phoneNumber}}</td>
+            <td>{{user.birthDate}}</td>
+          </tr>
+        </tbody>
+      </table> -->
+
+    </div>
+
+  </div>
+
+</div>
